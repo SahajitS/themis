@@ -24,14 +24,19 @@ function sendEmailNotification(){
             console.log('email gesendet:', info.response);
         }
     });
+}
 
-    function checkAndNotify(){
-        const isAvailable = checkAppointments();
-
-        if(isAvailable){
-            sendEmailNotification();
-        }
+async function checkAndNotify(){
+    const isAvailable = await checkAppointments();
+    
+    console.log('Sind Termine verfügbar?', isAvailable);
+    
+    if(isAvailable){
+        console.log('Sende E-Mail...');
+        sendEmailNotification();
+    } else {
+        console.log('Keine Termine verfügbar, keine E-Mail gesendet');
     }
 }
 
-setInterval(checkAndNotify, 10 * 60 * 1000);
+setInterval(checkAndNotify, 10 * 60 * 10);
