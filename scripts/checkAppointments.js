@@ -14,16 +14,11 @@ try{
 
     
 
-    await page.screenshot({ path : 'pre-tab.png' , fullPage : true});
     
 } catch(error){
     console.error('Element nicht gefunden', error);
     
     // Screenshot bei Fehler
-    await page.screenshot({ 
-        path: 'debug-error.png',
-        fullPage: true
-    });
     console.log('Screenshot gespeichert: debug-error.png');
     
     await browser.close();
@@ -56,7 +51,6 @@ let allAppointments = [];
     }
 
     console.log('Verfügbare Termine: ', allAppointments);
-    await page.screenshot({ path : 'tab.png', fullPage : true});
 
     if(allAppointments.length === 0){
         await browser.close();
