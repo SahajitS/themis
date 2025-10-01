@@ -59,10 +59,10 @@ let allAppointments = [];
 
     if(allAppointments.length === 0){
         await browser.close();
-        return false;
+        return true;
     }else{
         await browser.close();
-        return true;
+        return false;
     }
 
 }   catch(error){

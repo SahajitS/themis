@@ -1,11 +1,12 @@
 const nodemailer = require('nodemailer');
 const checkAppointments = require('./checkAppointments');
+require('dotenv').config();
 
 const transporter = nodemailer.createTransport({
     service : 'gmail',
     auth : {
         user : 'taigerlenbiy@gmail.com',
-        pass : 'kristall234'
+        pass : 'xqgo uvvo sscs drcu'
     }
 });
 
@@ -19,7 +20,7 @@ function sendEmailNotification(){
 
     transporter.sendMail(mailOptions, (error, info) => {
         if(error){
-            console.log('Fehler');
+            console.log(error);
         }else{
             console.log('email gesendet:', info.response);
         }
@@ -39,4 +40,4 @@ async function checkAndNotify(){
     }
 }
 
-setInterval(checkAndNotify, 10 * 60 * 10);
+setInterval(checkAndNotify, 10 * 60 * 100);
