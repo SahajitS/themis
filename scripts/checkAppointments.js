@@ -45,6 +45,7 @@ let allAppointments = [];
         .map(row => row.textContent.trim());
     });
 
+    await page.screenshot({ path : `tableStat${month}.png`, fullPage : true});
     allAppointments = allAppointments.concat(monthAppointmnets);
 
     if(month < 2){
@@ -59,10 +60,10 @@ let allAppointments = [];
 
     if(allAppointments.length === 0){
         await browser.close();
-        return true;
+        return {available : true, appointments : []};
     }else{
         await browser.close();
-        return false;
+        return {available : false, appointments : allAppointments};
     }
 
 }   catch(error){
