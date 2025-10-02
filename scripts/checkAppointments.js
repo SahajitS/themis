@@ -5,11 +5,11 @@ async function checkAppointments(){
 
     const browser = await puppeteer.launch({ 
         
-        exectuablePath: await chromium.executablePath(),
+        exectuablePath: await chromium.exectuablePath(),
 
         args: [
             ...chromium.args,
-            '--np-sandbox',
+            '--no-sandbox',
             '--disable-setuid-sandbox'
         ],
         headless: chromium.headless,
