@@ -42,4 +42,4 @@ async function checkAndNotify(){
     }
 }
 
-setInterval(checkAndNotify, 5 * 60 * 100);
+setInterval(checkAndNotify, 5 * 60 * 1000);
