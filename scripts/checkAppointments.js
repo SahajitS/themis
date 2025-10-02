@@ -1,8 +1,24 @@
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
+const chromium = require('@sparticuz/chromium');
+
 async function checkAppointments(){
-    const browser = await puppeteer.launch({ headkess: true });
+
+    const browser = await puppeteer.launch({ 
+        
+        exectuablePath: await chromium.exectuablePath(),
+
+        args: [
+            ...chromium.args,
+            '--np-sandbox',
+            '--disable-setuid-sandbox'
+        ],
+        headless: chromium.headless,
+    });
+
+
     const page = await browser.newPage();
     await page.goto('https://www.etermin.net/stadt-duisburg-abh-homberg');
+
 try{
     
     await page.waitForSelector('#capvalue219676', { visible: true, timeout: 10000 });
@@ -11,8 +27,6 @@ try{
     
     await page.waitForSelector('#bp1', { visible : true });
     await page.click('#bp1');
-
-    
 
     
 } catch(error){
