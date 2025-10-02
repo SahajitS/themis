@@ -68,10 +68,10 @@ let allAppointments = [];
 
     if(allAppointments.length === 0){
         await browser.close();
-        return {available : false, appointments : []};
+        return {available : true, appointments : []};
     }else{
         await browser.close();
-        return {available : true, appointments : allAppointments};
+        return {available : false, appointments : allAppointments};
     }
 
 }   catch(error){

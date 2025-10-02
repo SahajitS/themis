@@ -15,7 +15,7 @@ function sendEmailNotification(appointments){
 
     const mailOptions = {
         from : 'taigerlenbiy@gmail.com',
-        to : 'ripudumensingh@gmail.com',
+        to : ['ripudumensingh@gmail.com', 'surjit292002@gmail.com'], // Array von E-Mail-Adressen
         subject: 'Termin verfügbar',
         text: `Termine sind verfügbar!\n\nVerfügbare Termine: ${appointmentsText}`
     };
@@ -42,4 +42,4 @@ async function checkAndNotify(){
     }
 }
 
-setInterval(checkAndNotify, 5 * 60 * 1000);
+setInterval(checkAndNotify, 5 * 60 * 100);

@@ -5,23 +5,150 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mock Calendar</title>
     <style>
-        .ui-state-default { color: black; }
+        .ui-state-default { color: black; padding: 5px; margin: 2px; }
         .ui-state-active { background-color: green; color: white; }
         .ui-state-disabled { background-color: gray; color: lightgray; }
+        .ui-datepicker-calendar { border-collapse: collapse; width: 100%; }
+        .ui-datepicker-calendar td { border: 1px solid #ccc; padding: 5px; text-align: center; }
+        .month-navigation { margin: 20px 0; text-align: center; }
+        .month-navigation button { margin: 0 10px; padding: 5px 10px; }
+        .month-title { font-size: 18px; font-weight: bold; margin: 10px 0; }
     </style>
 </head>
 <body>
-    <table class="ui-datepicker-calendar">
-        <tr>
-            <td><span class="ui-state-default ui-state-active">1</span></td>
-            <td><span class="ui-state-default ui-state-disabled">2</span></td>
-            <td><span class="ui-state-default">3</span></td>
-        </tr>
-        <tr>
-            <td><span class="ui-state-default">4</span></td>
-            <td><span class="ui-state-default ui-state-active">5</span></td>
-            <td><span class="ui-state-default ui-state-disabled">6</span></td>
-        </tr>
-    </table>
+    <div class="month-navigation">
+        <button id="prev-month" onclick="changeMonth(-1)">Vorheriger Monat</button>
+        <span class="month-title" id="current-month">Dezember 2024</span>
+        <button id="next-month" onclick="changeMonth(1)">Nächster Monat</button>
+    </div>
+
+    <div id="calendar-container">
+        <!-- Monat 1: Dezember 2024 -->
+        <div class="month" id="month-0" style="display: block;">
+            <table class="ui-datepicker-calendar">
+                <tr>
+                    <td><span class="ui-state-default ui-state-active">1</span></td>
+                    <td><span class="ui-state-default ui-state-disabled">2</span></td>
+                    <td><span class="ui-state-default">3</span></td>
+                    <td><span class="ui-state-default">4</span></td>
+                    <td><span class="ui-state-default">5</span></td>
+                    <td><span class="ui-state-default">6</span></td>
+                    <td><span class="ui-state-default">7</span></td>
+                </tr>
+                <tr>
+                    <td><span class="ui-state-default">8</span></td>
+                    <td><span class="ui-state-default ui-state-active">9</span></td>
+                    <td><span class="ui-state-default">10</span></td>
+                    <td><span class="ui-state-default">11</span></td>
+                    <td><span class="ui-state-default">12</span></td>
+                    <td><span class="ui-state-default">13</span></td>
+                    <td><span class="ui-state-default">14</span></td>
+                </tr>
+                <tr>
+                    <td><span class="ui-state-default">15</span></td>
+                    <td><span class="ui-state-default">16</span></td>
+                    <td><span class="ui-state-default ui-state-active">17</span></td>
+                    <td><span class="ui-state-default">18</span></td>
+                    <td><span class="ui-state-default">19</span></td>
+                    <td><span class="ui-state-default">20</span></td>
+                    <td><span class="ui-state-default">21</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Monat 2: Januar 2025 -->
+        <div class="month" id="month-1" style="display: none;">
+            <table class="ui-datepicker-calendar">
+                <tr>
+                    <td><span class="ui-state-default">1</span></td>
+                    <td><span class="ui-state-default">2</span></td>
+                    <td><span class="ui-state-default">3</span></td>
+                    <td><span class="ui-state-default">4</span></td>
+                    <td><span class="ui-state-default">5</span></td>
+                    <td><span class="ui-state-default">6</span></td>
+                    <td><span class="ui-state-default">7</span></td>
+                </tr>
+                <tr>
+                    <td><span class="ui-state-default ui-state-active">8</span></td>
+                    <td><span class="ui-state-default">9</span></td>
+                    <td><span class="ui-state-default">10</span></td>
+                    <td><span class="ui-state-default">11</span></td>
+                    <td><span class="ui-state-default">12</span></td>
+                    <td><span class="ui-state-default">13</span></td>
+                    <td><span class="ui-state-default">14</span></td>
+                </tr>
+                <tr>
+                    <td><span class="ui-state-default">15</span></td>
+                    <td><span class="ui-state-default">16</span></td>
+                    <td><span class="ui-state-default">17</span></td>
+                    <td><span class="ui-state-default ui-state-active">18</span></td>
+                    <td><span class="ui-state-default">19</span></td>
+                    <td><span class="ui-state-default">20</span></td>
+                    <td><span class="ui-state-default">21</span></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Monat 3: Februar 2025 -->
+        <div class="month" id="month-2" style="display: none;">
+            <table class="ui-datepicker-calendar">
+                <tr>
+                    <td><span class="ui-state-default">1</span></td>
+                    <td><span class="ui-state-default">2</span></td>
+                    <td><span class="ui-state-default">3</span></td>
+                    <td><span class="ui-state-default">4</span></td>
+                    <td><span class="ui-state-default">5</span></td>
+                    <td><span class="ui-state-default">6</span></td>
+                    <td><span class="ui-state-default">7</span></td>
+                </tr>
+                <tr>
+                    <td><span class="ui-state-default">8</span></td>
+                    <td><span class="ui-state-default">9</span></td>
+                    <td><span class="ui-state-default">10</span></td>
+                    <td><span class="ui-state-default">11</span></td>
+                    <td><span class="ui-state-default">12</span></td>
+                    <td><span class="ui-state-default">13</span></td>
+                    <td><span class="ui-state-default">14</span></td>
+                </tr>
+                <tr>
+                    <td><span class="ui-state-default">15</span></td>
+                    <td><span class="ui-state-default">16</span></td>
+                    <td><span class="ui-state-default ui-state-active">17</span></td>
+                    <td><span class="ui-state-default">18</span></td>
+                    <td><span class="ui-state-default">19</span></td>
+                    <td><span class="ui-state-default">20</span></td>
+                    <td><span class="ui-state-default">21</span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let currentMonth = 0;
+        const months = ['Dezember 2024', 'Januar 2025', 'Februar 2025'];
+
+        function changeMonth(direction) {
+            // Verstecke aktuellen Monat
+            document.getElementById(`month-${currentMonth}`).style.display = 'none';
+            
+            // Berechne neuen Monat
+            currentMonth += direction;
+            
+            // Begrenze auf 0-2 (3 Monate)
+            if (currentMonth < 0) currentMonth = 0;
+            if (currentMonth > 2) currentMonth = 2;
+            
+            // Zeige neuen Monat
+            document.getElementById(`month-${currentMonth}`).style.display = 'block';
+            document.getElementById('current-month').textContent = months[currentMonth];
+        }
+
+        // Simuliere die eTermin-Navigation mit aria-label Attributen
+        document.addEventListener('DOMContentLoaded', function() {
+            // Füge aria-label zu den Navigation-Buttons hinzu (wie bei eTermin)
+            document.getElementById('next-month').setAttribute('aria-label', 'Nächstes Monat');
+            document.getElementById('prev-month').setAttribute('aria-label', 'Vorheriges Monat');
+        });
+    </script>
 </body>
 </html>
