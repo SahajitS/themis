@@ -5,7 +5,7 @@ async function checkAppointments(){
 
     const browser = await puppeteer.launch({ 
         
-        exectuablePath: await chromium.exectuablePath(),
+        exectuablePath: await chromium.executablePath(),
 
         args: [
             ...chromium.args,
