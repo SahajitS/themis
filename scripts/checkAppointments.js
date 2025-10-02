@@ -33,7 +33,6 @@ try{
     console.error('Element nicht gefunden', error);
     
     // Screenshot bei Fehler
-    console.log('Screenshot gespeichert: debug-error.png');
     
     await browser.close();
     return false;
@@ -54,7 +53,7 @@ let allAppointments = [];
         .map(row => row.textContent.trim());
     });
 
-    await page.screenshot({ path : `tableStat${month}.png`, fullPage : true});
+    
     allAppointments = allAppointments.concat(monthAppointmnets);
 
     if(month < 2){
